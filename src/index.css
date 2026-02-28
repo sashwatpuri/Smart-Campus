@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Campus Pulse Dark Theme */
+    --background: 220 30% 6%;
+    --foreground: 216 30% 96%;
+    --card: 220 25% 10%;
+    --card-foreground: 216 30% 96%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 216 30% 96%;
+    --primary: 183 100% 50%;
+    --primary-foreground: 220 30% 6%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 216 30% 96%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 183 100% 50%;
+    --accent-foreground: 220 30% 6%;
+    --destructive: 348 100% 60%;
+    --destructive-foreground: 216 30% 96%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 183 100% 50%;
+    --radius: 0.75rem;
+    
+    /* Custom Campus Pulse Colors */
+    --cp-bg-primary: #0B0F17;
+    --cp-bg-secondary: #111827;
+    --cp-surface: #1A2233;
+    --cp-surface-highlight: #232D42;
+    --cp-border: #2A3449;
+    --cp-accent: #00F0FF;
+    --cp-text-primary: #F2F5F9;
+    --cp-text-secondary: #A9B3C2;
+    --cp-success: #27C59A;
+    --cp-warning: #F59E0B;
+    --cp-danger: #FF4D6D;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#0B0F17] text-[#F2F5F9] antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  
+  code, pre, .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Glass Panel Effect */
+  .glass-panel {
+    @apply bg-[#1A2233]/80 backdrop-blur-md border border-[#2A3449] rounded-xl;
+  }
+  
+  /* Cyan Glow Effect */
+  .cyan-glow {
+    box-shadow: 0 0 0 1px var(--cp-border), 0 0 40px rgba(0, 240, 255, 0.12);
+  }
+  
+  /* Status Colors */
+  .status-healthy {
+    @apply text-[#27C59A];
+  }
+  
+  .status-warning {
+    @apply text-[#F59E0B];
+  }
+  
+  .status-critical {
+    @apply text-[#FF4D6D];
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#00F0FF] to-[#27C59A] bg-clip-text text-transparent;
+  }
+  
+  /* Section Title */
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply text-2xl md:text-3xl font-bold tracking-wider uppercase text-[#F2F5F9];
+    letter-spacing: 0.08em;
+  }
+  
+  /* Data Label */
+  .data-label {
+    font-family: 'IBM Plex Mono', monospace;
+    @apply text-xs font-medium tracking-widest uppercase text-[#A9B3C2];
+    letter-spacing: 0.12em;
+  }
+  
+  /* Card Hover Effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .card-hover:hover {
+    @apply bg-[#232D42] border-[#00F0FF]/30;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.08);
+  }
+  
+  /* Animated Border */
+  .animated-border {
+    position: relative;
+  }
+  
+  .animated-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.5), transparent, rgba(0, 240, 255, 0.3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  /* Pulse Animation */
+  @keyframes pulse-cyan {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  .pulse-cyan {
+    animation: pulse-cyan 3s ease-in-out infinite;
+  }
+  
+  /* Flow Animation */
+  @keyframes flow {
+    0% { stroke-dashoffset: 100; }
+    100% { stroke-dashoffset: 0; }
+  }
+  
+  .flow-line {
+    stroke-dasharray: 10 5;
+    animation: flow 2s linear infinite;
+  }
+  
+  /* Number Counter Animation */
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0B0F17;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #2A3449;
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00F0FF;
+  }
+}
+
+@layer utilities {
+  /* Text Shadow for Glow Effect */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  }
+  
+  /* Background Grid Pattern */
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(42, 52, 73, 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42, 52, 73, 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* Radial Gradient Background */
+  .bg-radial-vignette {
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(11, 15, 23, 0.8) 100%);
+  }
+}
