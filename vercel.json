@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build:check",
+  "devCommand": "npm run dev",
+  "installCommand": "npm ci",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "env": {
+    "VITE_APP_NAME": "@Smart Campus Dashboard",
+    "VITE_ENABLE_MOCK_DATA": "@true"
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "status": 200
+    }
+  ]
+}
